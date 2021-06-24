@@ -1,6 +1,9 @@
 # MCU name
 MCU = atmega32u4
 
+# Processor frequency
+F_CPU = 16000000
+
 # Bootloader selection
 #   Teensy       halfkay
 #   Pro Micro    caterina
@@ -9,7 +12,8 @@ MCU = atmega32u4
 #   QMK DFU      qmk-dfu
 #   ATmega32A    bootloadHID
 #   ATmega328P   USBasp
-BOOTLOADER = atmel-dfu
+# BOOTLOADER = atmel-dfu
+BOOTLOADER = caterina
 
 # Build Options
 #   change yes to no to disable
@@ -17,7 +21,7 @@ BOOTLOADER = atmel-dfu
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
-CONSOLE_ENABLE = no         # Console for debug
+CONSOLE_ENABLE = yes         # Console for debug
 COMMAND_ENABLE = yes        # Commands for debug and configuration
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
@@ -34,5 +38,5 @@ SPLIT_KEYBOARD = yes
 SPLIT_TRANSPORT = custom
 SRC += transport.c
 QUANTUM_LIB_SRC += serial.c
-POINTING_DEVICE_ENABLE = no
+POINTING_DEVICE_ENABLE = yes
 SRC += analog.c

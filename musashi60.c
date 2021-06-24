@@ -55,7 +55,7 @@ void musashi60_calibration() {
     int x = 0;
     int y = 0;
     int s = 0;
-    dprintf("start calibration\n");
+    uprintf("start calibration\n");
     for ( int i=0; i<10; i++) {
         x += analogReadPin(POINTING_H_PIN) >> 2;
         y += analogReadPin(POINTING_V_PIN) >> 2;
@@ -63,10 +63,10 @@ void musashi60_calibration() {
     }
     x /= 10;
     y /= 10;
-    dprintf("avg: %d, %d\n", x, y);
+    uprintf("avg: %d, %d\n", x, y);
     js_cal_x = 127 - x;
     js_cal_y = 127 - y;
-    dprintf("cal: %d, %d, %d\n", js_cal_x, js_cal_x, s);
+    uprintf("cal: %d, %d, %d\n", js_cal_x, js_cal_x, s);
     if ( s == 0 ) {
         no_js = s;
     }
@@ -108,6 +108,7 @@ void pointing_device_task(void) {
     if ( is_master ) {
         musashi60_set_mouse(x, y, s);
     } else {
+        /* musashi60_set_wheel(x , y); */
         musashi60_send_axis(x, y);
     }
     pointing_device_send();
